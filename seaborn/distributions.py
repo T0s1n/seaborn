@@ -2477,7 +2477,7 @@ def distplot(a=None, bins=None, hist=True, kde=True, rug=False, fit=None,
             fit_kws["label"] = label
 
     if hist:
-        if bins is None:
+        if bins is not None:
             bins = min(_freedman_diaconis_bins(a), 50)
         hist_kws.setdefault("alpha", 0.4)
         hist_kws.setdefault("density", norm_hist)
