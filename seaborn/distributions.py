@@ -327,7 +327,7 @@ class _DistributionPlotter(VectorPlotter):
             # Extract the data points from this sub set and remove nulls
             observations = sub_data[data_variable]
 
-            # Extract the weights for this subset of observations
+             # Extract the weights for this subset of observations
             if "weights" in self.variables:
                 weights = sub_data["weights"]
                 part_weight = weights.sum()
