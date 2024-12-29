@@ -328,9 +328,10 @@ class _DistributionPlotter(VectorPlotter):
             observations = sub_data[data_variable]
 
             # Extract the weights for this subset of observations
+            # Extract the weights for this subset of observations
             if "weights" in self.variables:
                 weights = sub_data["weights"]
-                part_weight = weights.sum()
+                part_weight = np.sum(weights) if isinstance(weights, (list, np.ndarray)) else weights
             else:
                 weights = None
                 part_weight = len(sub_data)
@@ -461,7 +462,7 @@ class _DistributionPlotter(VectorPlotter):
 
             if "weights" in self.variables:
                 sub_data["weight"] = sub_data.pop("weights")
-                part_weight = sub_data["weight"].sum()
+                part_weight = np.sum(sub_data["weight"]) if isinstance(sub_data["weight"], (list, np.ndarray)) else sub_data["weight"]
             else:
                 part_weight = len(sub_data)
 
@@ -1062,7 +1063,7 @@ class _DistributionPlotter(VectorPlotter):
 
             # Extract the weights for this subset of observations
             if "weights" in self.variables:
-                weights = sub_data["weights"]
+                weights = np.array(sub_data["weights"]) if isinstance(sub_data["weights"], (list, np.ndarray)) else sub_data["weights"]
             else:
                 weights = None
 
